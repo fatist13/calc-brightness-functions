@@ -1,58 +1,29 @@
 // BRIGHTNESS IPO CALC BY MR. V
 
 // HTML Variables
-let rInEl = document.getElementById("r-in");
-let gInEl = document.getElementById("g-in");
-let bInEl = document.getElementById("b-in");
-let brightEl = document.getElementById("bright");
-let previewEl = document.getElementById("preview");
+let rIn1El = document.getElementById("r1-in");
+let gIn1El = document.getElementById("g1-in");
+let bIn1El = document.getElementById("b1-in");
+let bright1El = document.getElementById("bright1");
+let preview1El = document.getElementById("preview1");
+
+let rIn2El = document.getElementById("r2-in");
+let gIn2El = document.getElementById("g2-in");
+let bIn2El = document.getElementById("b2-in");
+let bright2El = document.getElementById("bright2");
+let preview2El = document.getElementById("preview2");
+
+let rIn3El = document.getElementById("r3-in");
+let gIn3El = document.getElementById("g3-in");
+let bIn3El = document.getElementById("b3-in");
+let bright3El = document.getElementById("bright3");
+let preview3El = document.getElementById("preview3");
 
 // Button Click Event
 document.getElementById("btn").addEventListener("click", btnClicked);
 
 function btnClicked() {
-  // Get Input Values
-  let r = +rInEl.value;
-  let g = +gInEl.value;
-  let b = +bInEl.value;
-
-  // Validate Input Values - rgb values must be between 0 and 255
-  if (r < 0) {
-    r = 0;
-    rInEl.value = 0;
-  } else if (r > 255) {
-    r = 255;
-    rInEl.value = 255;
-  }
-
-  if (g < 0) {
-    g = 0;
-    gInEl.value = 0;
-  } else if (g > 255) {
-    g = 255;
-    gInEl.value = 255;
-  }
-
-  if (b < 0) {
-    b = 0;
-    bInEl.value = 0;
-  } else if (b > 255) {
-    b = 255;
-    bInEl.value = 255;
-  }
-
-  // Calculate & Output Brightness
-  let brightness = Math.sqrt(0.299 * r ** 2 + 0.587 * g ** 2 + 0.114 * b ** 2);
-  brightness = Math.round(brightness);
-  brightEl.innerHTML = brightness;
-
-  // Update rgb preview: brightness > 160 -> black text, else white text
-  let rgbString = `rgb(${r}, ${g}, ${b})`;
-  previewEl.innerHTML = rgbString;
-  previewEl.style.backgroundColor = rgbString;
-  if (brightness > 160) {
-    previewEl.style.color = "black";
-  } else {
-    previewEl.style.color = "white";
-  }
+  processColor(rIn1El, gIn1El, bIn1El, preview1El, bright1El);
+  processColor(rIn2El, gIn2El, bIn2El, preview2El, bright2El);
+  processColor(rIn3El, gIn3El, bIn3El, preview3El, bright3El);
 }
